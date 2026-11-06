@@ -1,0 +1,380 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary: #4F46E5;
+  --primary-hover: #4338CA;
+  --secondary: #10B981;
+  --secondary-hover: #059669;
+  --bg-color: #F8FAFC;
+  --surface: #FFFFFF;
+  --text-main: #1E293B;
+  --text-muted: #64748B;
+  --border: #E2E8F0;
+  --warning-bg: #FFFBEB;
+  --warning-border: #FCD34D;
+  --danger: #EF4444;
+  --danger-bg: #FEE2E2;
+  --danger-border: #FCA5A5;
+  --secondary-bg: #ECFDF5;
+  --success-border: #86efac;
+
+  /* Sidebar */
+  --sidebar-bg: linear-gradient(180deg, #1e3a8a 0%, #0f172a 100%);
+  --sidebar-text: #ffffff;
+  --sidebar-text-muted: rgba(255, 255, 255, 0.7);
+  --sidebar-hover: rgba(255, 255, 255, 0.15);
+  --sidebar-active-text: #ffffff;
+  --table-header-bg: #F1F5F9;
+  --radius: 12px;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+body.dark-mode {
+  --bg-color: #0F172A;
+  --surface: #1E293B;
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --border: #334155;
+  --primary: #6366F1;
+  --primary-hover: #4F46E5;
+  --warning-bg: #453A1A;
+  --warning-border: #927521;
+  --danger: #F87171;
+  --danger-bg: #4A1D1D;
+  --danger-border: #7F2222;
+  --secondary-bg: #133D2A;
+  --secondary-border: #14593D;
+  --sidebar-bg: #0B1120;
+  --sidebar-text: #E2E8F0;
+  --sidebar-text-muted: #94A3B8;
+  --sidebar-hover: #2563EB;
+  --sidebar-active-text: #ffffff;
+  --table-header-bg: #1E293B;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', sans-serif;
+}
+
+/* =========================================
+   Componentes Globales
+   ========================================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn--primary {
+  background-color: var(--primary);
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn--outline {
+  background-color: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border);
+}
+
+.btn--outline:hover {
+  background-color: var(--bg-color);
+  border-color: var(--text-muted);
+}
+
+.btn--full {
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.625rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  color: var(--text-main);
+  background-color: var(--surface);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+/* =========================================
+   Página de Login
+   ========================================= */
+
+.login-wrapper {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--bg-color);
+  position: relative;
+}
+
+.login-split-image {
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 60%;
+  background-image: url('../img/foto institucionwebp.webp');
+  background-size: cover;
+  background-position: center;
+  display: none;
+  z-index: 1;
+}
+
+@media (min-width: 900px) {
+  .login-split-image { display: block; }
+}
+
+.login-image-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.4) 0%, rgba(15, 23, 42, 0.8) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+  color: white;
+  text-align: center;
+}
+body.dark-mode .login-image-overlay {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(0, 0, 0, 0.9) 100%);
+}
+
+.login-benefits-container {
+  max-width: 700px;
+  width: 100%;
+}
+
+.benefits-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.25rem;
+}
+
+.benefits-subtitle {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.benefits-intro {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #e2e8f0;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.benefit-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.benefit-card i {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #60a5fa;
+}
+
+.benefit-card p {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.login-split-form {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--surface);
+  min-height: 100vh;
+}
+
+@media (min-width: 900px) {
+  .login-split-form {
+    width: 45%;
+    border-top-right-radius: 120px;
+    border-bottom-right-radius: 120px;
+    box-shadow: 20px 0 50px rgba(0,0,0,0.15);
+  }
+  body.dark-mode .login-split-form {
+    box-shadow: 20px 0 50px rgba(0,0,0,0.6);
+  }
+}
+
+/* Remove glassmorphism from inner card since outer form has solid background */
+.login-card {
+  background: transparent;
+  padding: 2rem;
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  z-index: 10;
+  animation: slideUpFade 0.6s ease-out forwards;
+}
+
+body.dark-mode .login-card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.login-logo {
+  display: block;
+  width: 100px;
+  height: auto;
+  margin: 0 auto 1.5rem auto;
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.login-title {
+  font-size: 2rem;
+  color: var(--text-main);
+  margin-bottom: 0.25rem;
+  font-weight: 800;
+}
+
+.login-subtitle {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.alert {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  margin-bottom: 1.25rem;
+  display: none;
+}
+
+.alert--error {
+  background-color: var(--danger-bg);
+  color: var(--danger);
+  border: 1px solid var(--danger-border);
+}
+
+.alert--success {
+  background-color: var(--secondary-bg);
+  color: var(--secondary);
+  border: 1px solid var(--secondary-border);
+}
+
+/* Loader animado */
+.loader {
+  display: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ffffff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+@keyframes rotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
